@@ -1,0 +1,16 @@
+@startuml VueComportementale
+skinparam Style strictuml
+actor Utilisateur
+
+
+Utilisateur -> Interface_Graphique : annule_l_annulation(selection, buffer)
+
+alt etatListActionAnnullees != null
+    Interface_Graphique -> Annule_Et_Refait_Action : annulerLaDerniereAnnulation()
+    Interface_Graphique -> Annule_Et_Refait_Action : enregistreEtatOriginel()
+    Annule_Et_Refait_Action -> Action  : refaireAction()
+    Action -> Annule_Et_Refait_Action : enregistreModification()
+    Interface_Graphique -> Utilisateur : changeAffichage()
+end
+
+@enduml

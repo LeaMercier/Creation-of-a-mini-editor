@@ -1,0 +1,56 @@
+Les différents cas d'utilisation que nous avons mis dans notre diagramme des cas d'utilisation :
+
+Cas d'utilisation "Copier" :
+
+But : enregistrer la sélection dans le cache
+Début : l’utilisateur décide de copier sa sélection du texte
+Fin : la copie a eu lieu
+Acteur : Utilisateur
+Enchaînement :
+- l’utilisateur décide de copier sa sélection du texte
+- la sélection est copiée dans le cache
+Alternatives :
+aucune sélection n’a été faite ou il n’y a pas de texte, rien ne se passe
+
+
+Cas d'utilisation "Couper" :
+
+But : enregistrer la sélection dans le cache, et l'enlever du buffer et de l'arffichage du texte
+Début : l’utilisateur décide de couper sa sélection du texte
+Fin : le texte a été coupé
+Acteur : Utilisateur
+Enchaînement :
+- l’utilisateur décide de couper sa sélection du texte
+- la sélection est copiée dans le cache
+- le buffer est privé de la sélection
+- le texte est réaffiché
+Alternatives :
+- aucune sélection n’a été faite ou il n’y a pas de texte, rien ne se passe
+
+Cas d'utilisation "Coller" :
+
+But : mettre le texte stocké dans le cache dans le bufferet réafficher le texte
+Début : l’utilisateur décide de coller sa sélection du texte
+Fin : la partie du cache a été collé
+Acteur : Utilisateur
+Enchaînement :
+- l’utilisateur décide de coller le cache dans le texte et clique sur le bouton
+- le buffer est agrémenté du cache
+- On réaffiche le texte
+Alternatives :
+- le cache est vide, rien ne se passe
+Exception :
+- l'Utilisateur a cliqué sur un bouton et a oublié de revenir sur l'interface graphique,
+peut engendrer l'affichage d'erreurs dans la console
+
+Cas d'utilisation "Editer le texte" :
+But : permettre à l'Utilisateur de rentrer ou enlever du texte
+début : l'Utilisateur commence à rentrer ou enlever du texte
+fin : l'Utilisateur s'arrête
+Acteur : Utilisateur
+Enchaînement :
+- l'Utilisateur clique sur l'interface graphique et rentre ou enleve du texte
+- le texte est enregistré dans le buffer et affiché
+Exception :
+- l'Utilisateur a cliqué sur un bouton et a oublié de revenir sur l'interface graphique,
+le texte n'est pas pris en compte

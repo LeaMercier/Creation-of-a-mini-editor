@@ -1,0 +1,129 @@
+@startuml mediatheque
+
+'Partie pour l'interface graphique, front-end'
+Interface ActionListener{
+}
+
+class JButon{
+}
+
+abstract class Bouton{
+    actionPerformed()
+    getPreferredSize()
+    addActionListener()
+    effectuModif()
+}
+
+class BoutonColler {
+}
+
+class BoutonCopier {
+}
+
+class BoutonCouper {
+}
+
+
+class ComponentTexte{
+    getPreferredSize()
+    updateSelection()
+    updateBuffer()
+    mouseDagged()
+    mouseMoved()
+    textValueChanged()
+    update()
+}
+
+class MainActivity{
+    double XGLOBAL
+    double YGLOBAL
+    main()
+}
+class Window{
+    double x
+    double y
+    init()
+}
+ActionListener <|-- Bouton
+JButon <|-- Bouton
+Bouton <|-- BoutonColler
+Bouton <|-- BoutonCopier
+Bouton <|-- BoutonCouper
+MainActivity *-- Window: "0..1"
+Window *-- BoutonColler: "0..1"
+Window *-- ComponentTexte: "0..1"
+Window *-- BoutonCopier: "0..1"
+Window *-- BoutonCouper: "0..1"
+
+'Partie pour la gestion interne du programme, back-end'
+
+Interface ModifieTexte {
+    undo()
+    redo()
+}
+
+abstract class ExpaceMemoire{
+    String contenu
+    get()
+    affecte()
+}
+
+class Buffer{
+}
+
+class PressePapier{
+}
+
+ExpaceMemoire <|-- Buffer
+ExpaceMemoire <|-- PressePapier
+
+class Sélection{
+    int start
+    int stop
+    setStart()
+    setEnd()
+    getStart()
+    getEnd()
+}
+
+abstract class Action{
+}
+
+class Copier{
+    copier()
+}
+
+class Coller{
+    String sauvegarde
+    String annulation
+    coller()
+}
+
+class Couper {
+    String sauvegarde
+    String annulation
+    couper()
+}
+
+
+ModifieTexte <|-- Copier
+ModifieTexte <|-- Coller
+
+Action <|-- Copier
+Action <|-- Coller
+Action <|-- Couper
+
+Action-PressePapier:"cache"
+Action-Sélection:"selection"
+Action-Buffer:"buffer"
+
+Bouton-PressePapier : "cache"
+Bouton-Sélection:"selection"
+Bouton-Buffer:"buffer"
+
+BoutonColler-ComponentTexte:"texte"
+BoutonCouper-ComponentTexte:"texte"
+
+ComponentTexte-Sélection:"selection"
+ComponentTexte-Buffer:"memoire"
+@enduml

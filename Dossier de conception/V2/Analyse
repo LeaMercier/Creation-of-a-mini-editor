@@ -1,0 +1,33 @@
+Les différents cas d'utilisation que nous avons mis dans notre diagramme des cas d'utilisation 
+sont les mêmes que dans celui de la V1, avec juste deux cas en plus :
+
+Cas d'utilisation "Annulation d'une action" :
+
+But : annuler la dernière action qui vient d'avoir lieu
+Début : l’utilisateur d'annuler la dernière action qui vient d'avoir lieu
+Fin : l'action a étée annulée
+Acteur : Utilisateur
+Enchaînement :
+- l’utilisateur décide d'annuler la dernière action qui vient d'avoir lieu
+- la dernière action effectue son action undo
+- la valeur du buffer est modifié
+- on réafiche le texte puisque ce dernier a été modifié
+Alternatives :
+aucune sélection n’a été faite ou il n’y a pas de texte, rien ne se passe
+
+Cas d'utilisation "Réactivation d'une action" :
+
+But : refaire une action qui a étée défaite
+Début : l’utilisateur de refaire la dernière action qui vient d'être annulée lieu
+Fin : l'action a été rejouée
+Acteur : Utilisateur
+Enchaînement :
+- l’utilisateur de refaire la dernière action qui vient d'être annulée lieu
+- la dernière action annulée effectue son action redo
+- la valeur du buffer est modifié
+- on réafiche le texte puisque ce dernier a été modifié
+Alternatives :
+aucune sélection n’a été faite ou il n’y a pas de texte, rien ne se passe
+
+NB : nous annulons uniquement les actions qui ont un effet direct sur le texte (soit copier et coller).
+    De plus lorsque l'on revient en arrière, nous ne modifions pas le cache, comme un éditeur de texte classique.

@@ -1,0 +1,31 @@
+@startuml schema_d_etat
+
+[*] --> State1
+State1 : Edition de l'interface graphique
+State Action {
+    State Copie
+    State ModifieLeTexte {
+        State Coupe
+        State Colle
+    }
+}
+State actionAnnulée
+State actionRefaite
+
+State ModificationDesEspacesMemoires{
+    buffer : etat mis à jour
+    PressePapier : etat mis à jour
+}
+ModifieLeTexte --> actionAnnulée
+actionAnnulée --> actionRefaite
+actionRefaite --> ModificationDesEspacesMemoires
+actionAnnulée --> ModificationDesEspacesMemoires
+State1 -> Action
+Copie --> PressePapier : enregistre la sélection
+Coupe --> buffer : enlève la sélection
+Coupe --> PressePapier : met la sélection dans le cache
+Colle --> buffer : ajoute la valeur du cache
+ModificationDesEspacesMemoires --> State1
+State1 -> [*]
+
+@enduml

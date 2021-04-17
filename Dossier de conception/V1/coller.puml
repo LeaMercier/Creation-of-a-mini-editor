@@ -1,0 +1,14 @@
+@startuml VueComportementale
+skinparam Style strictuml
+actor Utilisateur
+
+
+Utilisateur -> Interface_Graphique : colle_une_selection(selection, cache, memoire)
+
+
+Interface_Graphique -> Buffer : add_cache()
+PressePapier -> Interface_Graphique  : renvoiLeCache()
+Interface_Graphique -> Utilisateur : changeAffichage()
+
+
+@enduml

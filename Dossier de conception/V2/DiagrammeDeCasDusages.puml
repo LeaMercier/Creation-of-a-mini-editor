@@ -1,0 +1,32 @@
+@startuml VueFonctionnelle
+
+package Acteur {
+    actor "Utilisateur" as U
+}
+
+package Interface_Graphique {
+
+    usecase "Copier" as Cop
+    usecase "Couper" as Cou
+    usecase "Coller" as Col
+    usecase "Annuler une action" as Aa
+    usecase "Rejouer une action" as Ra
+    usecase "Edite le texte" as ET
+    usecase "Enregistrement et affichage du texte" as modif
+
+}
+
+U-Cop
+U-Cou
+U-Col
+U-Aa
+U-Ra
+U-ET
+ET ..>modif:"Include"
+Aa ..>modif:"Include"
+Ra ..>modif:"Include"
+Cop ..> modif :"Include"
+Cou ..> modif :"Include"
+Col ..> modif : "Include"
+
+@enduml

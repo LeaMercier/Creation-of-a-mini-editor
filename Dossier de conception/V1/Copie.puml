@@ -1,0 +1,12 @@
+@startuml VueComportementale
+skinparam Style strictuml
+actor Utilisateur
+
+
+Utilisateur -> Interface_Graphique : effectu_une_copie(selection, cache, memoire)
+
+
+Interface_Graphique -> PressePapier : enregistreCache()
+
+
+@enduml

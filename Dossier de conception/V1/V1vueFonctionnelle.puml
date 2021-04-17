@@ -1,0 +1,23 @@
+@startuml VueFonctionnelle
+
+package Acteur {
+    actor "Utilisateur" as U
+}
+
+package Interface_Graphique {
+
+    usecase "Cliquer sur les boutons" as CB
+    usecase "ajouter du texte" as AjT
+    usecase "Edite le texte" as ET
+    usecase "Enregistrement et affichage du texte" as modif
+
+}
+
+U-AjT
+U-CB
+U-ET
+AjT ..> modif :"Include"
+CB ..> modif :"Include"
+ET ..> modif : "Include"
+
+@enduml
